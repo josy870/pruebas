@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  jenkins:
+    container_name: jenkins
+    image: jenkins/jenkins:lts
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+    ports:
+      - "9080:8080"
+    networks:
+      - backend
+    restart: unless-stopped
+
+networks:
+  backend:
+    name: network_jenkins
